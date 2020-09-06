@@ -92,4 +92,32 @@ export class APIService {
       httpOptions
     ).toPromise();
   }
+
+  public async next(): Promise<any> {
+    const URL = baseURL + '/next';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.tokenService.accessToken.value
+      })
+    }
+    return this.http.post(
+      URL,
+      null,
+      httpOptions
+    ).toPromise();
+  }
+
+  public async previous(): Promise<any> {
+    const URL = baseURL + '/previous';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.tokenService.accessToken.value
+      })
+    }
+    return this.http.post(
+      URL,
+      null,
+      httpOptions
+    ).toPromise();
+  }
 }
