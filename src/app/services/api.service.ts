@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CLIENT_ID, CLIENT_SECRET } from '../app.config';
 import { IpcService } from './ipc.service';
 import { TokenService } from './token.service';
+import { IRefreshResponse } from './api';
 
 const baseURL = 'https://api.spotify.com/v1/me/player';
 
@@ -63,6 +64,26 @@ export class APIService {
       null,
       httpOptions
     ).toPromise();
+  }
+
+  public async refreshToken(refreshToken: string): Promise<string> {
+    const URL = baseURL + '/currently-playing';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Basic ' + btoa(CLIENT_ID + ':' + CLIENT_SECRET),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      params: new HttpParams()
+        .set("grant_type", 'refresh_token')
+        .set("refresh_token", refreshToken)
+    }
+    const response = await this.http.post<IRefreshResponse>(
+      URL,
+      null,
+      httpOptions
+    ).toPromise();
+    
+    return response.access_token;
   }
 
   public async play(): Promise<any> {
