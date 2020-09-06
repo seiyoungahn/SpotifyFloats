@@ -78,4 +78,18 @@ export class APIService {
       httpOptions
     ).toPromise();
   }
+
+  public async pause(): Promise<any> {
+    const URL = baseURL + '/pause';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.tokenService.accessToken.value
+      })
+    }
+    return this.http.put(
+      URL,
+      null,
+      httpOptions
+    ).toPromise();
+  }
 }
