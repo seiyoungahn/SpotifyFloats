@@ -120,4 +120,32 @@ export class APIService {
       httpOptions
     ).toPromise();
   }
+
+  public async getCurrentTrack(): Promise<ITrack> {
+    const URL = baseURL + '/currently-playing'
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.tokenService.accessToken.value
+      })
+    }
+    const response: any = await this.http.get(
+      URL,
+      httpOptions
+    ).toPromise();
+    let track: ITrack = null;
+    // reponse is null when no track is currently playing
+    if (response) {
+      const name = response.item.name;
+      let artists = [];
+      response.item.artists.forEach(data => {
+        artists.push(data.name);
+      });
+      track = {
+        name,
+        artists,
+        isPlaying: response.is_playing
+      }
+    }
+    return track;
+  }
 }
