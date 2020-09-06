@@ -63,5 +63,19 @@ export class APIService {
       null,
       httpOptions
     ).toPromise();
-  }      
+  }
+
+  public async play(): Promise<any> {
+    const URL = baseURL + '/play';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.tokenService.accessToken.value
+      })
+    }
+    return this.http.put(
+      URL,
+      null,
+      httpOptions
+    ).toPromise();
+  }
 }
