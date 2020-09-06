@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TokenService } from './services/token.service';
 import { PersistenceService } from './services/persistence.service';
+import { AuthenticationService } from './services/authentication.service';
 import { IpcService } from './services/ipc.service';
 import { APIService } from './services/api.service';
 import { PlayerService } from './services/player.service';
@@ -19,6 +20,7 @@ import { PlayerService } from './services/player.service';
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
   ],
   providers: [
     PersistenceService,
