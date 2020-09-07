@@ -10,8 +10,8 @@ const REFRESH_TOKEN = 'spotifyFloatsRefreshToken';
  */
 @Injectable()
 export class TokenService {
-  public accessToken: BehaviorSubject<String> = new BehaviorSubject(null);
-  public refreshToken: BehaviorSubject<String> = new BehaviorSubject(null);
+  public accessToken: BehaviorSubject<string> = new BehaviorSubject(undefined);
+  public refreshToken: BehaviorSubject<string> = new BehaviorSubject(undefined);
 
   constructor(private persistenceService: PersistenceService) {
     this.init();
@@ -24,12 +24,12 @@ export class TokenService {
     this.refreshToken.next(refreshToken);
   }
 
-  public setAccessToken(accessToken: String): void {
+  public setAccessToken(accessToken: string): void {
     this.accessToken.next(accessToken);
     this.persistenceService.set(ACCESS_TOKEN, accessToken);
   }
 
-  public setRefreshToken(refreshToken: String): void {
+  public setRefreshToken(refreshToken: string): void {
     this.refreshToken.next(refreshToken);
     this.persistenceService.set(REFRESH_TOKEN, refreshToken);
   }
