@@ -10,7 +10,7 @@ const MIN_OPACITY = 10;
 const MAX_OPACITY = 100;
 
 /**
- * Component to show settings
+ * Component for displaying settings
  */
 @Component({
   selector: 'settings',

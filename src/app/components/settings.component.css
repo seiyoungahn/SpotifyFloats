@@ -1,0 +1,61 @@
+div.settingsContainer {
+  display: flex;
+  flex-direction: column;
+  font-family: 'MontserratLight';
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+}
+
+div.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+  margin: 0.5em 0;
+  padding: 0 0.5em;
+}
+
+#authenticate {
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: underline;
+}
+
+#authenticate:hover {
+  color: white;
+}
+
+.slider {
+  -webkit-appearance: none;
+  /* overflow: hidden; */
+  width: 70%;
+  height: 0.5em;
+  border-radius: 0.15em;
+  outline: none;
+  /* background: rgb(197, 197, 197); */
+}
+
+/* .slider::-webkit-slider-runnable-track {
+  color: rgb(197, 197, 197);
+  -webkit-appearance: none;
+  background-color: rgb(197, 197, 197);
+} */
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  /* box-shadow: -15em 0 0 15em rgb(29, 185, 84); */
+}
+
+/* .slider::-ms-fill-lower {
+  background: rgb(29, 185, 84);
+} */
+
+/* .slider::-webkit-slider-runnable-track {
+  background: white;
+} */
