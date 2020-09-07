@@ -12,6 +12,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { IpcService } from './services/ipc.service';
 import { APIService } from './services/api.service';
 import { PlayerService } from './services/player.service';
+import { SettingsComponent } from './components/settings.component';
 import { SettingsService } from './services/settings.service';
 import { SliderComponent } from './components/slider.component';
 
