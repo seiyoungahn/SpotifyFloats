@@ -12,6 +12,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { IpcService } from './services/ipc.service';
 import { APIService } from './services/api.service';
 import { PlayerService } from './services/player.service';
+import { SliderComponent } from './components/slider.component';
 
 const appRoutes: Routes = [
   { path: '', component: PlayerComponent }, // default path

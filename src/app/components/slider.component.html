@@ -1,0 +1,1 @@
+<input [style.background]="background | async" class="slider" type="range" name="size" [min]="min" [max]="max" [value]="valueSubject | async" (change)="onChange($event)" (input)="test($event.target.value)">
