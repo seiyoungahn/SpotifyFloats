@@ -1,0 +1,43 @@
+div.playerContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(40, 40, 40);
+  border-radius: 1.5em;
+  padding: 0.5em;
+  font-size: 15px;
+  width: 17em;
+}
+
+div.player {
+  height: 2em;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+fa-icon {
+  color: rgb(197, 197, 197);
+  margin-right: 0.5em;
+}
+
+fa-icon.menuIcon {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+fa-icon:hover {
+  color: white;
+}
+
+fa-icon:active {
+  color: rgb(197, 197, 197);
+}
+
+.title {
+  margin-right: 0.5em;
+  color: white;
+  -webkit-app-region: drag;
+  width: auto;
+  font-family: 'MontserratMedium';
+}
