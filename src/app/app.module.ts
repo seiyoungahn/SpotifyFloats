@@ -12,6 +12,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { IpcService } from './services/ipc.service';
 import { APIService } from './services/api.service';
 import { PlayerService } from './services/player.service';
+import { SettingsService } from './services/settings.service';
 import { SliderComponent } from './components/slider.component';
 
 const appRoutes: Routes = [
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
+    BrowserModule,
     HttpClientModule,
     FontAwesomeModule
   ],
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
     IpcService,
     APIService,
     PlayerService,
+    SettingsService
   ],
   bootstrap: [ AppComponent ]
 })
