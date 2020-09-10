@@ -5,10 +5,9 @@
     <fa-icon [icon]="playIcon" (click)="play()" *ngIf="!(isPlaying | async)"></fa-icon>
     <fa-icon [icon]="pauseIcon" (click)="pause()" *ngIf="isPlaying | async"></fa-icon>
     <fa-icon [icon]="nextIcon" (click)="next()"></fa-icon>
-    <marquee behavior="loop" direction="left" speed="slow" 
-            class="title" *ngIf="accessToken | async">
-      {{ currentSongTitle | async }}
-    </marquee>
+    <div class="title" *ngIf="accessToken | async">
+      <p>{{ currentSongTitle | async }}</p>
+    </div>
     <label class="title" *ngIf="!(accessToken | async)">
       Spotify authentication required
     </label>
