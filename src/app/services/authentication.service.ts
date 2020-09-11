@@ -11,7 +11,6 @@ import { IpcService } from './ipc.service';
 export class AuthenticationService {
   constructor(private tokenService: TokenService,
               private ipcService: IpcService) {
-    this.authenticate();
     this.tokenService.accessToken.subscribe(
       accessToken => {
         // must use strict equality to distinguish between undefined and null
