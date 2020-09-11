@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class SettingsService {
   public size: BehaviorSubject<number> = new BehaviorSubject(15); // font size in px
-  public opacity: BehaviorSubject<number> = new BehaviorSubject(70); // range from 0-100
+  public opacity: BehaviorSubject<number> = new BehaviorSubject(100); // range from 0-100
 
   constructor() {}
 
