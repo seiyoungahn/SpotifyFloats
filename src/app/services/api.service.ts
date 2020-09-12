@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { CLIENT_ID, CLIENT_SECRET } from '../app.config';
 import { IpcService } from './ipc.service';
@@ -46,7 +47,6 @@ export class APIService {
   }
 
   private requestTokens(code: string): Promise<ITokenResponse> {
-    // console.log(code);
     const URL = 'https://accounts.spotify.com/api/token';
     const redirectURL = 'https://www.google.com/';
     const httpOptions = {
@@ -66,8 +66,8 @@ export class APIService {
     ).toPromise();
   }
 
-  public async refreshToken(refreshToken: string): Promise<string> {
-    const URL = baseURL + '/currently-playing';
+  public refreshToken(refreshToken: string): Observable<any> {
+    const URL = "https://accounts.spotify.com/api/token";
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Basic ' + btoa(CLIENT_ID + ':' + CLIENT_SECRET),
@@ -77,13 +77,12 @@ export class APIService {
         .set("grant_type", 'refresh_token')
         .set("refresh_token", refreshToken)
     }
-    const response = await this.http.post<IRefreshResponse>(
+
+    return this.http.post<IRefreshResponse>(
       URL,
       null,
       httpOptions
-    ).toPromise();
-    
-    return response.access_token;
+    );
   }
 
   public async play(): Promise<any> {
