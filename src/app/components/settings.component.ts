@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
+import { distinctUntilChanged, map, skip } from 'rxjs/operators';
 import { SettingsService } from '../services/settings.service';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -20,6 +21,7 @@ const MAX_OPACITY = 100;
 export class SettingsComponent {
   public size: BehaviorSubject<number>;
   public opacity: BehaviorSubject<number>;
+  public volume: BehaviorSubject<number>;
 
   public sizeBg: BehaviorSubject<string>;
   public opacityBg: BehaviorSubject<string>;
@@ -32,8 +34,18 @@ export class SettingsComponent {
               private authService: AuthenticationService) {
     this.size = this.settingsService.size;
     this.opacity = this.settingsService.opacity;
+    this.volume = new BehaviorSubject(100);
     this.sizeBg = new BehaviorSubject(this.getBgString(this.settingsService.size.value, MIN_SIZE, MAX_SIZE));
     this.bgString = this.getBgString(this.settingsService.size.value, MIN_SIZE, MAX_SIZE);
+    this.volume.pipe(
+      skip(1), // ignore the default value (100)
+      map((value) => Math.round(value)),
+      distinctUntilChanged()
+    ).subscribe(
+      (volume) => this.settingsService.setVolume(volume).catch(
+        () => this.volume.next(volume) // revert to original volume in case of error
+      )
+    );
   }
 
   public onSizeChange(event: any) {
