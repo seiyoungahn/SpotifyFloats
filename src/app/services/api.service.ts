@@ -168,4 +168,19 @@ export class APIService {
     }
     return track;
   }
+
+  public async setVolume(volume: number): Promise<any> {
+    const volume_percent = Math.round(volume);
+    const URL = baseURL + '/volume/?volume_percent=' + volume_percent;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.tokenService.accessToken.value
+      })
+    }
+    return this.http.put(
+      URL,
+      null,
+      httpOptions
+    ).toPromise();
+  }
 }
