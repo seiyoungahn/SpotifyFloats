@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { APIService, ITrack } from './api.service';
 
-const TITLE_PULL_RATE = 5000;
+const TITLE_PULL_RATE = 3000; // rate for updating currently playing track
 
 /**
  * Wrapper over APIService to expose player related functions
