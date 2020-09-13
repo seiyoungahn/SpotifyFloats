@@ -14,11 +14,6 @@ export class PlayerService {
   public isPlaying: BehaviorSubject<boolean> = new BehaviorSubject(undefined);
 
   constructor(private apiService: APIService) {
-    // pull the currently playing track every 5 seconds
-    this.isPlaying.subscribe(isPlaying => {
-      console.log("isPlaying: " + isPlaying);
-    })
-
     setInterval(_ => {
       this.updateCurrentTrack();
     }, TITLE_PULL_RATE);

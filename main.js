@@ -68,15 +68,10 @@ ipcMain.on('request-auth', (event, authURL) => {
   authWindow.webContents.on('will-redirect', function (event, URL) {
     const redirectURL = 'https://www.google.com/';
     if (URL.includes(redirectURL)) {
-      console.log('redirecting');
-      console.log(URL);
       let authCode = extractAuthCode(URL);
-      console.log(authCode);
       mainWindow.webContents.send('auth-return', authCode);
       authWindow.destroy();
       authWindow = null;
-    } else {
-      console.log('still in spotify');
     }
   });
 });
